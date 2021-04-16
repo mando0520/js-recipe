@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <button id = "button1">+1</button>
+    <button id = "button2">送信</button>
+
+    <div id = "display">GeekSalonの年齢は何歳？</div>
+    <div id = "display2">結果</div>
+
+    <script>
+        
+        const BUTTON1 = document.getElementById("button1")
+        const BUTTON2 = document.getElementById("button2")
+        const DISPLAY2 = document.getElementById("display2")
+
+        let count = 0
+
+        BUTTON1.onclick = function () {
+            DISPLAY2.textContent = "はずれ！"
+            count +=1
+            DISPLAY2.textContent = count
+        }
+
+        BUTTON2.onclick = function () {
+            
+            if(count == 4){
+                DISPLAY2.textContent = "正解！"
+            }else if(count < 4){
+                DISPLAY2.textContent = "若すぎる！"
+                count = 0
+            }else{
+                DISPLAY2.textContent = "老人やん！"
+                count = 0
+            }
+            
+        }
+
+    </script>
+
+
+</body>
+</html>
