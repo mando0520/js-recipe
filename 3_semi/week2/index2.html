@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <div>
+      <input type="text" id="memo-input" />
+      <button id="add-button">追加</button>
+    </div>
+
+    <div id="memo-container"></div>
+
+    <script>
+      const memoInput = document.getElementById("memo-input")
+      const addButton = document.getElementById("add-button")
+      const memoContainer = document.getElementById("memo-container")
+      let memos = []
+
+      addButton.onclick = function() {
+        const id = Math.random().toString(16)
+        const text = memoInput.value
+        const obj = { id, text }
+        memos.push(obj)
+        localStorage.memos = JSON.stringify(memos)
+
+        if (text !== "") {
+          for (let i = 0; i < memos.length; i++) {
+            makeCard(memos[i])
+          }
+
+          memoInput.value = ""
+        }
+        console.log(memos)
+      }
+
+      const makeCard = function(text) {
+        memoContainer.innerHTML = ""
+        let deleteButton
+
+        for (let i = 0; i < memos.length; i++) {
+          const card = document.createElement("div")
+          deleteButton = document.createElement("div")
+
+          card.id = memos[i].id
+          card.className = "card"
+          card.textContent = memos[i].text
+          memoContainer.append(card)
+
+          deleteButton.className = "deleteButton"
+          deleteButton.textContent = "削除"
+          card.append(deleteButton)
+        }
+
+        deleteButton.onclick = function() {
+          for (let i = 0; i < memos.length; i++) {
+            if (memos[i].id === deleteButton.parentNode.attr("id")) {
+              deleteButton.parent().remove()
+            }
+          }
+        }
+      }
+
+      if (localStorage.memos) {
+        memos = JSON.parse(localStorage.memos)
+        for (let i = 0; i < memos.length; i++) {
+          makeCard(memos[i])
+        }
+      }
+    </script>
+  </body>
+</html>
