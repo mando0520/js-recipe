@@ -1,0 +1,72 @@
+.vending-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.vending-machine__add-my-money {
+  margin-top: 2.5rem;
+}
+
+.vending-machine__add-amount-money {
+  margin-top: 2.5rem;
+}
+
+.vending-machine__display {
+  font-size: 2em;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.vending-machine__display__money {
+  color: #20a4f3;
+}
+
+.vending-machine__display__money--warn {
+  color: #ffd166;
+}
+
+.vending-machine__display__money--danger {
+  color: #ef476f;
+}
+
+.vending-machine__buy-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.vending-machine__buy-buttons__button {
+  width: 10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.vending-machine__buy-buttons__button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.vending-machine__items-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-top: 1rem;
+}
+
+.vending-machine__items-container__figure {
+  width: 5rem;
+  height: 5rem;
+  background-color: #fff;
+}
+
+.vending-machine__items-container__figure__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

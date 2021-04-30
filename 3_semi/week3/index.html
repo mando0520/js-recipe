@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="vending-machine-style.css" />
+    <title>自販機</title>
+  </head>
+  <body>
+    <div class="vending-machine">
+      <div class="vending-machine__add-my-money">
+        <button id = "add_thousand_yen">
+          バイトして1000円所持金を増やす
+        </button>
+      </div>
+      <div class="vending-machine__display">
+        現在の所持金:<span class="vending-machine__display__money" id="my-money"
+          >0</span
+        >円
+      </div>
+      <div class="vending-machine__add-amount-money">
+        <button id = "put_money">
+          自販機に100円入れる
+        </button>
+
+        <button id = "return_money">
+          おつりボタン
+        </button>
+      </div>
+      <div class="vending-machine__display">
+        投入金額:<span class="vending-machine__display__money" id="amount-money"
+          >0</span
+        >円
+      </div>
+      <div class="vending-machine__buy-buttons">
+        <button class="vending-machine__buy-buttons__button" id="tea-button" disabled>
+          お茶 100円
+        </button>
+
+        <button class="vending-machine__buy-buttons__button" id="coke-button" disabled>
+          コーラ 130円
+        </button>
+
+        <button class="vending-machine__buy-buttons__button" id="beer-button" disabled>
+          ビール 200円
+        </button>
+      </div>
+      <div class="vending-machine__items-container" id="display"></div>
+    </div>
+    <script src="vending-machine-script.js"></script>
+  </body>
+</html>
