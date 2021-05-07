@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        margin: 1rem;
+        padding: 1rem;
+        border: solid 1px black;
+      }
+      div {
+        margin-top: 0.5rem;
+      }
+
+      input {
+        width: 30rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- テンプレート構文について -->
+      <section>
+        {{ message }}
+      </section>
+
+      <!-- v-bindについて -->
+      <section>
+        <div title="やあ">
+          title属性は、ホバーするとテキストを表示させます。
+        </div>
+        <div v-bind:title="title">
+          このテキストにマウスをホバーすると、動的に変わるtitleプロパティが見られます。
+        </div>
+      </section>
+
+      <!-- v-ifとv-elseについて -->
+      <section>
+        <span v-if="seen">今、seenはtrueです。falseに書き換えてみましょう。</span>
+        <span v-else>今、seenはfalseです</span>
+      </section>
+
+      <!-- v-forについて -->
+      <!-- v-forについて -->
+      <section>
+        <div v-for="todo in todos">
+            {{ todo.text }}
+        </div>
+      </section>
+
+      <!-- v-onとmethodsについて -->
+      <section>
+        <div>
+          {{ message }}
+        </div>
+        <div>
+          <button v-on:click="reverseMessage">reverseMessage</button>
+        </div>
+      </section>
+
+      <!-- v-modelについて -->
+      <section>
+        <div>
+          {{message}}
+        </div>
+        <div>
+          <input type="text" v-model="message"/>
+        </div>
+      </section>
+
+      <!-- v-onとmethodsについて -->
+      <section>
+        <div>
+          {{ number }}
+        </div>
+        <div>
+          <input type="number" v-model="count" />
+          <button v-on:click="countUp">+</button>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <input type="text" v-model="message"/>
+          <button v-on:click="addtodos">todo追加</button>
+        </div>
+
+        <div v-for="todo in todos">
+          {{ todo.text }}
+          <button v-on:click="deletetodos">todo削除</button>
+        </div>
+
+      </section>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+        message: "hello",
+        title: "You loaded this page on " + new Date().toLocaleString(),
+        seen: true,
+        count: 0,
+        todos: [
+        { text: 'Learn JavaScript' },
+        { text: 'Learn Vue' },
+        { text: 'Build something awesome' },
+        ],
+        number: 0,
+        },
+        methods: {
+          reverseMessage: function() {
+          this.message = this.message.split("").reverse().join("")
+          },
+
+          countUp: function() {
+          this.number += Number(this.count)
+          },
+
+          addtodos: function() {
+          this.todos.push({text: this.message})
+          },
+          deletetodos: function() {
+            delete this.todos[1];
+          },
+        },
+      })
+      app.todos.push({ text: "pushで追加されたオブジェクトのテキスト" })
+    </script>
+
+
+  </body>
+</html>
